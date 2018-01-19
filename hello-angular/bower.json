@@ -1,0 +1,23 @@
+{
+  "name": "hello-angular",
+  "description": "",
+  "main": "",
+  "authors": [
+    "AMahdy AbdElAziz <amahdy7@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.3.1",
+    "vaadin-valo-theme": "^0.3.2",
+    "vaadin-button": "^1.0.5",
+    "vaadin-text-field": "^1.2.0"
+  }
+}

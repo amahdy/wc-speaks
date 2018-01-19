@@ -1,0 +1,13 @@
+language: node_js
+node_js: stable
+before_install:
+  - "npm install -g @angular/cli"
+  - "npm install -g angular-cli-ghpages"
+  - "npm install -g bower"
+  - "bower install"
+  - "npm install"
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+script:
+  - "ng build --prod"
+  - "ngh --repo=https://$GITHUB_TOKEN@github.com/amahdy/hello-angular-wc.git --no-silent"
