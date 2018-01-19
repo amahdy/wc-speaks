@@ -1,0 +1,44 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../bower_components/vaadin-valo-theme/vaadin-button.html">
+<link rel="import" href="../../bower_components/vaadin-button/vaadin-button.html">
+
+<link rel="import" href="../../bower_components/vaadin-valo-theme/vaadin-text-field.html">
+<link rel="import" href="../../bower_components/vaadin-text-field/vaadin-text-field.html">
+
+<dom-module id="hello-polymer-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <vaadin-text-field id="text" placeholder="Type Something"></vaadin-text-field>
+    <vaadin-button on-click='clicked'>Click Me!</vaadin-button>
+    <h4>Hello [[prop1]]!</h4>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class HelloPolymerApp extends Polymer.Element {
+      static get is() { return 'hello-polymer-app'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'Polymer App'
+          }
+        };
+      }
+
+      clicked() {
+        this.prop1 = this.$.text.value;
+      }
+    }
+
+    window.customElements.define(HelloPolymerApp.is, HelloPolymerApp);
+  </script>
+</dom-module>

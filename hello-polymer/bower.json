@@ -1,0 +1,14 @@
+{
+  "name": "hello-polymer",
+  "main": "index.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0",
+    "vaadin-text-field": "^1.2.0",
+    "vaadin-button": "^1.0.5",
+    "vaadin-valo-theme": "^0.3.2"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  }
+}

@@ -1,0 +1,20 @@
+{
+    "extends": ["vaadin", "eslint:recommended"],
+    "ecmaVersion": 6,
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6":true
+    },
+    "plugins": [
+        "html"
+    ],
+    "globals": {
+        "vaadin": false,
+        "Polymer": false,
+        "CustomElements": false
+    },
+    "rules": {
+        "no-console": ["error",{"allow": ["warn", "error"] }]
+    }
+}

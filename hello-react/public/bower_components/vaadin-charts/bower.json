@@ -1,0 +1,45 @@
+{
+  "name": "vaadin-charts",
+  "homepage": "https://vaadin.com/charts",
+  "authors": [
+    "Vaadin Ltd"
+  ],
+  "description": "vaadin-charts",
+  "main": "vaadin-chart.html",
+  "keywords": [
+    "Vaadin",
+    "vaadin-chart",
+    "charts",
+    "highcharts",
+    "web-components",
+    "web-component",
+    "polymer"
+  ],
+  "license": "https://raw.githubusercontent.com/vaadin/vaadin-charts/master/LICENSE.txt",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:vaadin/vaadin-charts.git"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "gulpfile.js",
+    "package-lock.json",
+    "wct.conf.js"
+  ],
+  "dependencies": {
+    "highcharts": "^5.0.0",
+    "polymer": "^2.0.0",
+    "vaadin-themable-mixin": "^1.0.0",
+    "vaadin-license-checker": "vaadin/license-checker#^1.0.0"
+  },
+  "devDependencies": {
+    "elements-demo-resources": "^2.0.0",
+    "iron-component-page": "^3.0.0",
+    "iron-demo-helpers": "^2.0.0",
+    "webcomponentsjs": "^1.0.0",
+    "web-component-tester": "^6.1.5"
+  }
+}

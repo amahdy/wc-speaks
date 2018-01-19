@@ -1,0 +1,203 @@
+<dom-module id="context-menu-advanced-demos">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+    </style>
+
+
+    <h3>Opening and Closing Events</h3>
+    <vaadin-demo-snippet id='context-menu-advanced-demos-opening-and-closing-events'>
+      <template preserve-content>
+        <vaadin-context-menu selector="button" open-on="click" close-on="none">
+          <template>
+            <paper-listbox>
+              <paper-item>First menu item</paper-item>
+              <paper-item>Second menu item</paper-item>
+            </paper-listbox>
+          </template>
+
+          <button>Show Context Menu</button>
+        </vaadin-context-menu>
+      </template>
+    </vaadin-demo-snippet>
+
+
+    <h3>Using with Vaadin Grid</h3>
+    <vaadin-demo-snippet id='context-menu-advanced-demos-using-with-vaadin-grid'>
+      <template preserve-content>
+        <dom-module id="my-grid-view">
+          <template preserve-content>
+            <style>
+              vaadin-grid {
+                --vaadin-grid-body-cell: {
+                  padding: 0;
+                };
+              }
+
+              .body-content {
+                padding: 8px;
+              }
+            </style>
+
+            <vaadin-context-menu>
+              <template>
+                <paper-listbox>
+                  <paper-item on-tap="_add">Add</paper-item>
+                  <template is="dom-if" if="[[_isGridBody(target)]]">
+                    <paper-item content="[[target]]" on-tap="_remove">Remove</paper-item>
+                  </template>
+                </paper-listbox>
+              </template>
+
+              <vaadin-grid id="grid" items="[[items]]">
+
+                <vaadin-grid-column>
+                  <template class="header">Name</template>
+                  <template>
+                    <div class="body-content" data-index$="[[index]]">[[item.name]]</div>
+                  </template>
+                </vaadin-grid-column>
+
+                <vaadin-grid-column>
+                  <template class="header">Surname</template>
+                  <template>
+                    <div class="body-content" data-index$="[[index]]">[[item.surname]]</div>
+                  </template>
+                </vaadin-grid-column>
+
+                <vaadin-grid-column>
+                  <template class="header">Effort</template>
+                  <template>
+                    <div class="body-content" data-index$="[[index]]">[[item.effort]]</div>
+                  </template>
+                </vaadin-grid-column>
+
+              </vaadin-grid>
+
+            </vaadin-context-menu>
+          </template>
+
+          <script>
+
+            window.addDemoReadyListener('#context-menu-advanced-demos-using-with-vaadin-grid', function(document) {
+              class MyGridView extends Polymer.Element {
+                static get is() {
+                  return 'my-grid-view';
+                }
+
+                static get properties() {
+                  return {
+                    items: {
+                      type: Array,
+                      value: () => {
+                        return getItems();
+                      }
+                    }
+                  };
+                }
+
+                _isGridBody(target) {
+                  return target.classList.contains('body-content');
+                }
+
+                _add() {
+                  this.unshift('items', getNewItem());
+                }
+
+                _remove(e) {
+                  const index = parseInt(e.target.content.getAttribute('data-index'));
+                  this.splice('items', index, 1);
+                }
+              }
+
+              customElements.define(MyGridView.is, MyGridView);
+            });
+          </script>
+        </dom-module>
+
+        <my-grid-view></my-grid-view>
+      </template>
+    </vaadin-demo-snippet>
+
+
+    <h3>Basic HTML Menu</h3>
+    <vaadin-demo-snippet id='context-menu-advanced-demos-basic-html-menu'>
+      <template preserve-content>
+        <vaadin-context-menu>
+          <template>
+            <style>
+              .my-menu {
+                padding: 8px 0;
+                background: #fff;
+              }
+
+              .my-menu-item {
+                display: block;
+                padding: 8px 24px;
+                text-decoration: none;
+                color: #000;
+              }
+
+              .my-menu-item:hover {
+                background: #eee;
+              }
+            </style>
+            <div class="my-menu">
+              <a href="#" class="my-menu-item">First menu item</a>
+              <a href="#" class="my-menu-item">Second menu item</a>
+            </div>
+          </template>
+
+          <p>
+            This paragraph has a context menu built using basic HTML elements
+            and global CSS styles.
+          </p>
+        </vaadin-context-menu>
+      </template>
+    </vaadin-demo-snippet>
+
+
+    <h3>Long Menus</h3>
+    <vaadin-demo-snippet id='context-menu-advanced-demos-long-menus'>
+      <template preserve-content>
+        <dom-bind id="app">
+          <template>
+            <vaadin-context-menu>
+              <template>
+                <paper-listbox>
+                  <dom-repeat items="[[menuItems]]">
+                    <template>
+                      <paper-item>Menu Item</paper-item>
+                    </template>
+                  </dom-repeat>
+                </paper-listbox>
+              </template>
+
+              <p>
+                This paragraph has a context menu that cannot fit inside
+                the viewport. The context menu has scrolling for the menu items.
+              </p>
+            </vaadin-context-menu>
+          </template>
+        </dom-bind>
+        <script>
+          window.addDemoReadyListener('#context-menu-advanced-demos-long-menus', function(document) {
+            document.querySelector('#app').menuItems = new Array(30);
+          });
+        </script>
+      </template>
+    </vaadin-demo-snippet>
+  </div>
+  </template>
+  <script>
+    class ContextMenuAdvancedDemos extends DemoReadyEventEmitter(ContextMenuDemo(Polymer.Element)) {
+      static get is() {
+        return 'context-menu-advanced-demos';
+      }
+    }
+    customElements.define(ContextMenuAdvancedDemos.is, ContextMenuAdvancedDemos);
+  </script>
+</dom-module>
