@@ -34,8 +34,7 @@ Install [npm](https://docs.npmjs.com/getting-started/installing-node).
 ##### After the imports section add:
 ```ts
 Vue.config.ignoredElements = [
-  'vaadin-button',
-  'vaadin-text-field'
+  /^vaadin-/
 ]
 ```
 
