@@ -38,6 +38,25 @@ Vue.config.ignoredElements = [
 ]
 ```
 
+#### Open src/App.vue
+##### 	Replace all HTML in the `<template>` with:
+```
+  <div>
+    <vaadin-text-field id="text" placeholder="Type Something"></vaadin-text-field>
+    <vaadin-button @click="clicked">Click Me!</vaadin-button>
+    <h2>Hello {{msg}}!</h2>
+  </div>
+```
+
+###	In the `<script>` section, inside `default` define methods and the click event:
+```
+  methods: {
+    clicked() {
+      this.msg = document.getElementById("text").value;
+    }
+  }
+```
+
 `$ npm run dev`
 
 💰
